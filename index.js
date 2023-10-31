@@ -47,6 +47,20 @@ class LinkedList {
   }
   return this.tmp.value;
  }
+
+  getAtIndex(index){
+    if (this.isEmpty()){
+      return 'list is empty';
+    } else {
+      this.tmp = this.head;
+      for (let i = 0; i < index; i++) {
+        if (this.tmp.next == null) return Error('no such index exists')
+        this.tmp = this.tmp.next;
+      }
+    return this.tmp.value;
+      
+    }
+  }
 }
 
 class Node {
@@ -67,3 +81,4 @@ linkedlist.append('tralala');
 console.log(linkedlist.size());
 console.log(linkedlist.getHead());
 console.log(linkedlist.getTail());
+console.log(linkedlist.getAtIndex(2));
