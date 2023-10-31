@@ -29,6 +29,15 @@ class LinkedList {
     }
     return this.count;
  }
+
+ getHead(){
+  if (this.isEmpty()){
+    return Error('oops, empty list')
+  } else {
+    return this.head.value;
+  }
+ }
+ 
 }
 
 class Node {
@@ -47,3 +56,4 @@ linkedlist.append('lama');
 linkedlist.append('koekjes');
 linkedlist.append('tralala');
 console.log(linkedlist.size());
+console.log(linkedlist.getHead());
