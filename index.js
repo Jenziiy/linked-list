@@ -81,6 +81,43 @@ class LinkedList {
     }
     return Error('no such element exists');
   }
+
+  find(value){
+    if(this.isEmpty()) return Error('list is empty, you wont find a value here');
+    this.tmp = this.head;
+    this.count = 0;
+    while(this.tmp !== null){
+      if(this.tmp.value === value) return this.count;
+      this.count ++; 
+      this.tmp = this.tmp.next; 
+    }
+    return null;
+  }
+  stringify(){
+    if(this.isEmpty()) return Error('list is empty');
+    this.tmp = this.head;
+    this.stringified = `( ${this.tmp.value} )`;
+    while(this.tmp.next !== null){
+      this.tmp = this.tmp.next;
+      this.stringified = ` ${this.stringified} -> ( ${this.tmp.value} )`
+    }
+    return `${this.stringified} -> ( null )`
+  }
+
+  insertAt(value, index){
+    if(this.isEmpty()) return Error('not possible because the list is empty');
+    this.count = 0;
+    if(index === 0) return this.prepend(value);
+      this.curr = this.head;
+      while(this.count !== index){
+        this.prev = this.curr; 
+        this.curr = this.curr.next;
+        this.count ++; 
+      }
+      if (this.curr !== null){
+        this.prev.next = new Node(value, this.curr);
+      }
+  }
 }
 
 class Node {
@@ -104,4 +141,9 @@ console.log(linkedlist.getTail(), 'old tail before pop');
 console.log(linkedlist.getAtIndex(2));
 console.log(linkedlist.pop());
 console.log(linkedlist.getTail(), 'new tail after pop');
-console.log(linkedlist.containsValue('nope'));
+console.log(linkedlist.containsValue('lal'));
+console.log(linkedlist.find('koekjes'));
+console.log(linkedlist.find('lal'));
+console.log(linkedlist.stringify());
+console.log(linkedlist.insertAt('haha',2));
+console.log(linkedlist.stringify());
