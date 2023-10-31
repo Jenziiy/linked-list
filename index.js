@@ -71,6 +71,16 @@ class LinkedList {
     }
     return this.prev.next = null;
   }
+
+  containsValue(value){
+    if (this.isEmpty()) return Error('an empty list is not going to contain any value');
+    this.tmp = this.head;
+    while(this.tmp !== null){
+      if (this.tmp.value === value) return true;
+      this.tmp = this.tmp.next;
+    }
+    return Error('no such element exists');
+  }
 }
 
 class Node {
@@ -94,3 +104,4 @@ console.log(linkedlist.getTail(), 'old tail before pop');
 console.log(linkedlist.getAtIndex(2));
 console.log(linkedlist.pop());
 console.log(linkedlist.getTail(), 'new tail after pop');
+console.log(linkedlist.containsValue('nope'));
