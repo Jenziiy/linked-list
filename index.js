@@ -2,7 +2,7 @@ class LinkedList {
   head = null;
 
   isEmpty() {
-    return this.head == null;
+    return this.head === null;
   }
 
  append(value){
@@ -10,7 +10,7 @@ class LinkedList {
     this.prepend(value);
   } else {
     this.tmp = this.head; 
-    while(this.tmp.next != null) this.tmp = this.tmp.next;
+    while(this.tmp.next !== null) this.tmp = this.tmp.next;
     this.tmp.next = new Node(value, null);
   }
  }
@@ -23,7 +23,7 @@ class LinkedList {
   if (this.isEmpty()) return '0 items';
   this.tmp = this.head;
   this.count = 1;
-    while( this.tmp.next != null) {
+    while( this.tmp.next !== null) {
      this.tmp = this.tmp.next;
      this.count++; 
     }
@@ -32,12 +32,21 @@ class LinkedList {
 
  getHead(){
   if (this.isEmpty()){
-    return Error('oops, empty list')
+    return Error('oops, empty list, cant get head')
   } else {
     return this.head.value;
   }
  }
- 
+
+ getTail(){
+  if (this.isEmpty()){
+    return Error('oops, empty list, cant get tail')
+  } else {
+    this.tmp = this.head;
+    while( this.tmp.next !== null) this.tmp = this.tmp.next;
+  }
+  return this.tmp.value;
+ }
 }
 
 class Node {
@@ -57,3 +66,4 @@ linkedlist.append('koekjes');
 linkedlist.append('tralala');
 console.log(linkedlist.size());
 console.log(linkedlist.getHead());
+console.log(linkedlist.getTail());
