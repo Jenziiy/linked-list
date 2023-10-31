@@ -58,8 +58,18 @@ class LinkedList {
         this.tmp = this.tmp.next;
       }
     return this.tmp.value;
-      
     }
+  }
+
+  pop(){
+    if (this.isEmpty()) return Error('stop searching in an empty list');
+    this.curr = this.head;
+    this.prev = null;
+    while( this.curr.next !== null){
+      this.prev = this.curr;
+      this.curr = this.curr.next;
+    }
+    return this.prev.next = null;
   }
 }
 
@@ -80,5 +90,7 @@ linkedlist.append('koekjes');
 linkedlist.append('tralala');
 console.log(linkedlist.size());
 console.log(linkedlist.getHead());
-console.log(linkedlist.getTail());
+console.log(linkedlist.getTail(), 'old tail before pop');
 console.log(linkedlist.getAtIndex(2));
+console.log(linkedlist.pop());
+console.log(linkedlist.getTail(), 'new tail after pop');
